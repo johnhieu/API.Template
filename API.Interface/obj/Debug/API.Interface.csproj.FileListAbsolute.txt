@@ -1,0 +1,9 @@
+E:\SideProject\APITemplate\API.Template\API.Interface\bin\Debug\API.Interface.dll.config
+E:\SideProject\APITemplate\API.Template\API.Interface\bin\Debug\API.Interface.dll
+E:\SideProject\APITemplate\API.Template\API.Interface\bin\Debug\API.Interface.pdb
+E:\SideProject\APITemplate\API.Template\API.Interface\bin\Debug\EntityFramework.dll
+E:\SideProject\APITemplate\API.Template\API.Interface\bin\Debug\EntityFramework.SqlServer.dll
+E:\SideProject\APITemplate\API.Template\API.Interface\bin\Debug\EntityFramework.xml
+E:\SideProject\APITemplate\API.Template\API.Interface\bin\Debug\EntityFramework.SqlServer.xml
+E:\SideProject\APITemplate\API.Template\API.Interface\obj\Debug\API.Interface.dll
+E:\SideProject\APITemplate\API.Template\API.Interface\obj\Debug\API.Interface.pdb

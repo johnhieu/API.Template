@@ -1,0 +1,10 @@
+E:\SideProject\APITemplate\API.Template\API.Model\bin\Debug\API.Model.dll.config
+E:\SideProject\APITemplate\API.Template\API.Model\bin\Debug\API.Model.dll
+E:\SideProject\APITemplate\API.Template\API.Model\bin\Debug\API.Model.pdb
+E:\SideProject\APITemplate\API.Template\API.Model\bin\Debug\EntityFramework.dll
+E:\SideProject\APITemplate\API.Template\API.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\SideProject\APITemplate\API.Template\API.Model\bin\Debug\EntityFramework.xml
+E:\SideProject\APITemplate\API.Template\API.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\SideProject\APITemplate\API.Template\API.Model\obj\Debug\API.Model.csprojResolveAssemblyReference.cache
+E:\SideProject\APITemplate\API.Template\API.Model\obj\Debug\API.Model.dll
+E:\SideProject\APITemplate\API.Template\API.Model\obj\Debug\API.Model.pdb

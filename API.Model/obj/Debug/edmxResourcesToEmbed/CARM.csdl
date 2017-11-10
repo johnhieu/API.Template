@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CARMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ANAO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ANAO_ManualAdjustment" Relationship="Self.FK_ANAO_ManualAdjustment_ANAO" FromRole="ANAO" ToRole="ANAO_ManualAdjustment" />
+    <NavigationProperty Name="ANAO_Report" Relationship="Self.FK_ANAO_Report_ANAO" FromRole="ANAO" ToRole="ANAO_Report" />
+    <NavigationProperty Name="BPT_Schedule" Relationship="Self.FK_BPT_Schedule_ANAO" FromRole="ANAO" ToRole="BPT_Schedule" />
+  </EntityType>
+  <EntityType Name="ANAO_ManualAdjustment">
+    <Key>
+      <PropertyRef Name="WHS_SCA" />
+      <PropertyRef Name="Stocktake_No" />
+      <PropertyRef Name="SCODE" />
+    </Key>
+    <Property Name="GROUP_SERVICE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WHS_SCA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Stocktake_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CUSTODIAN_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Scode_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SURPLUS_QTY" Type="Int32" />
+    <Property Name="DEFICIENT_QTY" Type="Int32" />
+    <Property Name="ANAO_Id" Type="Int32" Nullable="false" />
+    <Property Name="COMMENTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ANAO" Relationship="Self.FK_ANAO_ManualAdjustment_ANAO" FromRole="ANAO_ManualAdjustment" ToRole="ANAO" />
+  </EntityType>
+  <EntityType Name="ANAO_Report">
+    <Key>
+      <PropertyRef Name="ReportID" />
+    </Key>
+    <Property Name="ReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StakeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Warehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Bin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstFoundSCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstFoundQTY" Type="Int32" Nullable="false" />
+    <Property Name="ANAO_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ANAO" Relationship="Self.FK_ANAO_Report_ANAO" FromRole="ANAO_Report" ToRole="ANAO" />
+  </EntityType>
+  <EntityType Name="ANAO_Summary">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Custodian_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WHS_SCA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StakeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NIINS_Counted" Type="Int32" Nullable="false" />
+    <Property Name="NIINS_In_Error" Type="Int32" Nullable="false" />
+    <Property Name="Error_Rate_By_Niin" Type="Double" Nullable="false" />
+    <Property Name="NIINS_Placed_Nic" Type="Int32" />
+    <Property Name="ANAO_Id" Type="Int32" Nullable="false" />
+    <Property Name="Lat" Type="Double" />
+    <Property Name="Lon" Type="Double" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Class" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GroupID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="BPT_Schedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ANAO_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ANAO" Relationship="Self.FK_BPT_Schedule_ANAO" FromRole="BPT_Schedule" ToRole="ANAO" />
+  </EntityType>
+  <EntityType Name="CARM_CARS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lat" Type="Double" />
+    <Property Name="Lon" Type="Double" />
+    <Property Name="NIIN_ID" Type="Int32" Nullable="false" />
+    <Property Name="PreviousSchedule" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Conclusion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CARM_NIINs" Relationship="Self.FK_CARS_NIINs" FromRole="CARM_CARS" ToRole="CARM_NIINs" />
+  </EntityType>
+  <EntityType Name="CARM_Evidences">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fData" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="RowGuid" Type="Guid" Nullable="false" />
+    <Property Name="NIIN_Id" Type="Int32" />
+    <NavigationProperty Name="CARM_NIINs" Relationship="Self.FK_BPTEvidences_NIINs" FromRole="CARM_Evidences" ToRole="CARM_NIINs" />
+  </EntityType>
+  <EntityType Name="CARM_Fishbone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dataFish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CARM_NIINs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Stockcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Bin_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Stocktake_ID" Type="Int32" Nullable="false" />
+    <Property Name="Error_By_Value" Type="Double" />
+    <Property Name="Error_By_Volume" Type="Double" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SaveData" Type="Byte" />
+    <Property Name="MILIS_Count" Type="Int32" />
+    <Property Name="Evidences" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Briefing" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Briefing_Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Comments_Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CARM_CARS" Relationship="Self.FK_CARS_NIINs" FromRole="CARM_NIINs" ToRole="CARM_CARS" />
+    <NavigationProperty Name="CARM_Evidences" Relationship="Self.FK_BPTEvidences_NIINs" FromRole="CARM_NIINs" ToRole="CARM_Evidences" />
+    <NavigationProperty Name="CARM_Stocktake" Relationship="Self.FK_NIINs_CARM_Stocktake" FromRole="CARM_NIINs" ToRole="CARM_Stocktake" />
+  </EntityType>
+  <EntityType Name="CARM_Reports">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Schedule_ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Schedule_ID" Type="Int32" Nullable="false" />
+    <Property Name="dateOfCompliance" Type="DateTime" Precision="3" />
+    <Property Name="personInterviewed" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="unitName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="details" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="testDetails" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="findings" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="actionOwner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="actionsRequired" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="category" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="rootAnalysis" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="rootAnalysisSub" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="remediated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="missingSample" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="actionRequired" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="score" Type="Int32" />
+    <Property Name="NIINCounted" Type="Int32" />
+    <Property Name="errorByVolume" Type="Double" />
+    <Property Name="errorByValue" Type="Double" />
+    <Property Name="auditFinishDate" Type="DateTime" Precision="3" />
+    <Property Name="warehouse" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="lat" Type="Double" />
+    <Property Name="lon" Type="Double" />
+    <Property Name="location" Type="Geography" />
+    <NavigationProperty Name="CARM_Stocktake" Relationship="Self.FK_CARM_Stocktake_CARM_Reports" FromRole="CARM_Reports" ToRole="CARM_Stocktake" />
+  </EntityType>
+  <EntityType Name="CARM_Schedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tier3_Auditor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RescheduledDate" Type="DateTime" Precision="0" />
+    <Property Name="BPT_Id" Type="Int32" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CARM_Stocktake">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Stake_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CARM_ScheduleID" Type="Int32" Nullable="false" />
+    <Property Name="CARM_ReportID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CARM_NIINs" Relationship="Self.FK_NIINs_CARM_Stocktake" FromRole="CARM_Stocktake" ToRole="CARM_NIINs" />
+    <NavigationProperty Name="CARM_Reports" Relationship="Self.FK_CARM_Stocktake_CARM_Reports" FromRole="CARM_Stocktake" ToRole="CARM_Reports" />
+  </EntityType>
+  <EntityType Name="Custodian">
+    <Key>
+      <PropertyRef Name="CUSTODIAN_ID" />
+    </Key>
+    <Property Name="CUSTODIAN_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CUSTODIAN_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DSTRCT_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SUPPLY_CUST_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WHOUSE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SCA" Relationship="Self.FK_Custodian_SCA" FromRole="Custodian" ToRole="SCA" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK_Custodian_Warehouse" FromRole="Custodian" ToRole="Warehouse" />
+  </EntityType>
+  <EntityType Name="Mined">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jsonString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SCA">
+    <Key>
+      <PropertyRef Name="SUPPLY_CUST_ID" />
+    </Key>
+    <Property Name="SUPPLY_CUST_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SUPP_CUST_STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SC_ACCOUNT_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LOCATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SUPPORTING_DSTRCT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FAR_DISTRICT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DSTRCT_LAT" Type="Double" />
+    <Property Name="DSTRCT_LON" Type="Double" />
+    <NavigationProperty Name="Custodians" Relationship="Self.FK_Custodian_SCA" FromRole="SCA" ToRole="Custodian" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TaskActivity">
+    <Key>
+      <PropertyRef Name="BIN_CODE" />
+      <PropertyRef Name="CUSTODIAN_ID" />
+      <PropertyRef Name="DSTRCT_CODE" />
+      <PropertyRef Name="STAKE_NUMBER" />
+      <PropertyRef Name="STOCK_CODE" />
+    </Key>
+    <Property Name="BIN_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CUSTODIAN_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DSTRCT_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="STAKE_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="STOCK_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ITEM_PRICE" Type="Double" />
+    <Property Name="COUNT_QTY" Type="Int32" Nullable="false" />
+    <Property Name="STAKE_METHOD" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="STAKE_TYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="DSTRCT_CODE" />
+      <PropertyRef Name="WHOUSE_ID" />
+    </Key>
+    <Property Name="DSTRCT_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DSTRCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DSTRCT_SUBURB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DSTRCT_STATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WHOUSE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DSTRCT_LAT" Type="Double" Nullable="false" />
+    <Property Name="DSTRCT_LON" Type="Double" Nullable="false" />
+    <Property Name="ErrorByValue" Type="Double" />
+    <Property Name="ErrorByVolume" Type="Double" />
+    <NavigationProperty Name="Custodians" Relationship="Self.FK_Custodian_Warehouse" FromRole="Warehouse" ToRole="Custodian" />
+  </EntityType>
+  <Association Name="FK_ANAO_ManualAdjustment_ANAO">
+    <End Role="ANAO" Type="Self.ANAO" Multiplicity="1" />
+    <End Role="ANAO_ManualAdjustment" Type="Self.ANAO_ManualAdjustment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANAO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ANAO_ManualAdjustment">
+        <PropertyRef Name="ANAO_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ANAO_Report_ANAO">
+    <End Role="ANAO" Type="Self.ANAO" Multiplicity="1" />
+    <End Role="ANAO_Report" Type="Self.ANAO_Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANAO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ANAO_Report">
+        <PropertyRef Name="ANAO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BPT_Schedule_ANAO">
+    <End Role="ANAO" Type="Self.ANAO" Multiplicity="1" />
+    <End Role="BPT_Schedule" Type="Self.BPT_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANAO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BPT_Schedule">
+        <PropertyRef Name="ANAO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARS_NIINs">
+    <End Role="CARM_NIINs" Type="Self.CARM_NIINs" Multiplicity="1" />
+    <End Role="CARM_CARS" Type="Self.CARM_CARS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARM_NIINs">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CARM_CARS">
+        <PropertyRef Name="NIIN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BPTEvidences_NIINs">
+    <End Role="CARM_NIINs" Type="Self.CARM_NIINs" Multiplicity="0..1" />
+    <End Role="CARM_Evidences" Type="Self.CARM_Evidences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARM_NIINs">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CARM_Evidences">
+        <PropertyRef Name="NIIN_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NIINs_CARM_Stocktake">
+    <End Role="CARM_Stocktake" Type="Self.CARM_Stocktake" Multiplicity="1" />
+    <End Role="CARM_NIINs" Type="Self.CARM_NIINs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARM_Stocktake">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CARM_NIINs">
+        <PropertyRef Name="Stocktake_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARM_Stocktake_CARM_Reports">
+    <End Role="CARM_Reports" Type="Self.CARM_Reports" Multiplicity="1" />
+    <End Role="CARM_Stocktake" Type="Self.CARM_Stocktake" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARM_Reports">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="Schedule_ID" />
+      </Principal>
+      <Dependent Role="CARM_Stocktake">
+        <PropertyRef Name="CARM_ReportID" />
+        <PropertyRef Name="CARM_ScheduleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Custodian_SCA">
+    <End Role="SCA" Type="Self.SCA" Multiplicity="0..1" />
+    <End Role="Custodian" Type="Self.Custodian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCA">
+        <PropertyRef Name="SUPPLY_CUST_ID" />
+      </Principal>
+      <Dependent Role="Custodian">
+        <PropertyRef Name="SUPPLY_CUST_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Custodian_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="Custodian" Type="Self.Custodian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="DSTRCT_CODE" />
+        <PropertyRef Name="WHOUSE_ID" />
+      </Principal>
+      <Dependent Role="Custodian">
+        <PropertyRef Name="DSTRCT_CODE" />
+        <PropertyRef Name="WHOUSE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="CARMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="ANAOs" EntityType="Self.ANAO" />
+    <EntitySet Name="ANAO_ManualAdjustment" EntityType="Self.ANAO_ManualAdjustment" />
+    <EntitySet Name="ANAO_Report" EntityType="Self.ANAO_Report" />
+    <EntitySet Name="ANAO_Summary" EntityType="Self.ANAO_Summary" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="BPT_Schedule" EntityType="Self.BPT_Schedule" />
+    <EntitySet Name="CARM_CARS" EntityType="Self.CARM_CARS" />
+    <EntitySet Name="CARM_Evidences" EntityType="Self.CARM_Evidences" />
+    <EntitySet Name="CARM_Fishbone" EntityType="Self.CARM_Fishbone" />
+    <EntitySet Name="CARM_NIINs" EntityType="Self.CARM_NIINs" />
+    <EntitySet Name="CARM_Reports" EntityType="Self.CARM_Reports" />
+    <EntitySet Name="CARM_Schedule" EntityType="Self.CARM_Schedule" />
+    <EntitySet Name="CARM_Stocktake" EntityType="Self.CARM_Stocktake" />
+    <EntitySet Name="Custodians" EntityType="Self.Custodian" />
+    <EntitySet Name="Mineds" EntityType="Self.Mined" />
+    <EntitySet Name="SCAs" EntityType="Self.SCA" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TaskActivities" EntityType="Self.TaskActivity" />
+    <EntitySet Name="Warehouses" EntityType="Self.Warehouse" />
+    <AssociationSet Name="FK_ANAO_ManualAdjustment_ANAO" Association="Self.FK_ANAO_ManualAdjustment_ANAO">
+      <End Role="ANAO" EntitySet="ANAOs" />
+      <End Role="ANAO_ManualAdjustment" EntitySet="ANAO_ManualAdjustment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ANAO_Report_ANAO" Association="Self.FK_ANAO_Report_ANAO">
+      <End Role="ANAO" EntitySet="ANAOs" />
+      <End Role="ANAO_Report" EntitySet="ANAO_Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BPT_Schedule_ANAO" Association="Self.FK_BPT_Schedule_ANAO">
+      <End Role="ANAO" EntitySet="ANAOs" />
+      <End Role="BPT_Schedule" EntitySet="BPT_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARS_NIINs" Association="Self.FK_CARS_NIINs">
+      <End Role="CARM_NIINs" EntitySet="CARM_NIINs" />
+      <End Role="CARM_CARS" EntitySet="CARM_CARS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BPTEvidences_NIINs" Association="Self.FK_BPTEvidences_NIINs">
+      <End Role="CARM_NIINs" EntitySet="CARM_NIINs" />
+      <End Role="CARM_Evidences" EntitySet="CARM_Evidences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NIINs_CARM_Stocktake" Association="Self.FK_NIINs_CARM_Stocktake">
+      <End Role="CARM_Stocktake" EntitySet="CARM_Stocktake" />
+      <End Role="CARM_NIINs" EntitySet="CARM_NIINs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARM_Stocktake_CARM_Reports" Association="Self.FK_CARM_Stocktake_CARM_Reports">
+      <End Role="CARM_Reports" EntitySet="CARM_Reports" />
+      <End Role="CARM_Stocktake" EntitySet="CARM_Stocktake" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Custodian_SCA" Association="Self.FK_Custodian_SCA">
+      <End Role="SCA" EntitySet="SCAs" />
+      <End Role="Custodian" EntitySet="Custodians" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Custodian_Warehouse" Association="Self.FK_Custodian_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouses" />
+      <End Role="Custodian" EntitySet="Custodians" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="20cdd8c476784ba38667722b59e15169" Name="Diagram1">
+        <EntityTypeShape EntityType="CARMModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.ANAO" Width="1.5" PointX="9.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.ANAO_ManualAdjustment" Width="1.5" PointX="12" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.ANAO_Report" Width="1.5" PointX="12" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.ANAO_Summary" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.AspNetRole" Width="1.5" PointX="2.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.AspNetUserClaim" Width="1.5" PointX="7.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.AspNetUserLogin" Width="1.5" PointX="7.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.AspNetUser" Width="1.5" PointX="5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.BPT_Schedule" Width="1.5" PointX="12" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.CARM_CARS" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.CARM_Evidences" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.CARM_Fishbone" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.CARM_NIINs" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.CARM_Reports" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.CARM_Schedule" Width="1.5" PointX="6.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.CARM_Stocktake" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.Custodian" Width="1.5" PointX="12" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.Mined" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.SCA" Width="1.5" PointX="9.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.sysdiagram" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.TaskActivity" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARMModel.Warehouse" Width="1.5" PointX="9.75" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="CARMModel.FK_ANAO_ManualAdjustment_ANAO" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.FK_ANAO_Report_ANAO" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.FK_BPT_Schedule_ANAO" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.FK_CARS_NIINs" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.FK_BPTEvidences_NIINs" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.FK_NIINs_CARM_Stocktake" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.FK_CARM_Stocktake_CARM_Reports" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.FK_Custodian_SCA" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.FK_Custodian_Warehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="CARMModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
